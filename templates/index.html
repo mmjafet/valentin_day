@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Valentín</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #ffe6e6;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+        .container {
+            text-align: center;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+        }
+        h1 {
+            color: #d63384;
+        }
+        .buttons {
+            margin-top: 20px;
+            position: relative;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 18px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: 0.2s;
+        }
+        .yes {
+            background-color: #ff4d6d;
+            color: white;
+        }
+        .no {
+            background-color: #6c757d;
+            color: white;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1 id="question">¿Suseth, Quieres ser mi Valentín? ❤️</h1>
+        <div class="buttons">
+            <button class="yes" onclick="sayYes()">Sí</button>
+            <button class="no" id="noButton" onmouseover="moveNoButton()">No</button>
+        </div>
+    </div>
+
+    <script>
+        let questions = [
+            "¿Segura que no? 😢",
+            "Piénsalo bien... 🥺",
+            "¿Y si te invito chocolates? 🍫",
+            "¿Y si te prometo muchos abrazos? 🤗",
+            "No me hagas esto... 💔",
+            "Yo sé que en el fondo quieres decir sí 😏",
+            "Merezco otra oportunidad 😭",
+            "¿Si te canto una canción cambias de opinión? 🎶",
+            "Si dices que sí, te haré reír todos los días 😂",
+            "¡Vuelve aquí! 🤨"
+        ];
+
+        function sayYes() {
+            document.getElementById("question").innerHTML = "¡Gracias, mi amor! Eres y siempre has sido el amor de mi vida ❤️";
+            document.getElementById("noButton").style.display = "none";
+        }
+
+        function moveNoButton() {
+            let noButton = document.getElementById("noButton");
+            let x = Math.random() * (window.innerWidth - 150);
+            let y = Math.random() * (window.innerHeight - 50);
+            noButton.style.left = x + "px";
+            noButton.style.top = y + "px";
+            
+            // Cambia la pregunta del botón "No"
+            let randomIndex = Math.floor(Math.random() * questions.length);
+            noButton.innerHTML = questions[randomIndex];
+        }
+    </script>
+
+</body>
+</html>
