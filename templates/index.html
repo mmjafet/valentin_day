@@ -20,6 +20,9 @@
             padding: 30px;
             border-radius: 10px;
             box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+            position: relative; /* Para que el botón se posicione dentro de este contenedor */
+            width: 400px; /* Ajusta el tamaño según tu preferencia */
+            height: 300px; /* Ajusta el tamaño según tu preferencia */
         }
         h1 {
             color: #d63384;
@@ -43,7 +46,7 @@
         .no {
             background-color: #6c757d;
             color: white;
-            position: absolute;
+            position: absolute; /* Permite mover el botón dentro del contenedor */
         }
     </style>
 </head>
@@ -77,21 +80,28 @@
         }
 
         function moveNoButton() {
-    let noButton = document.getElementById("noButton");
-    let maxX = window.innerWidth - noButton.offsetWidth - 20; // Limita el movimiento horizontal
-    let maxY = window.innerHeight - noButton.offsetHeight - 20; // Limita el movimiento vertical
+            let noButton = document.getElementById("noButton");
+            let container = document.querySelector(".container");
 
-    let x = Math.random() * maxX;
-    let y = Math.random() * maxY;
+            // Obtén las dimensiones del contenedor
+            let containerRect = container.getBoundingClientRect();
+            let buttonRect = noButton.getBoundingClientRect();
 
-    noButton.style.left = `${x}px`;
-    noButton.style.top = `${y}px`;
+            // Asegúrate de que el botón no se mueva fuera del contenedor
+            let maxX = containerRect.width - buttonRect.width - 20;  // Rango en X dentro del contenedor
+            let maxY = containerRect.height - buttonRect.height - 20;  // Rango en Y dentro del contenedor
 
-    // Cambia la pregunta del botón "No"
-    let randomIndex = Math.floor(Math.random() * questions.length);
-    noButton.innerHTML = questions[randomIndex];
-}
+            let x = Math.random() * maxX;  // Calcula una posición aleatoria en X
+            let y = Math.random() * maxY;  // Calcula una posición aleatoria en Y
 
+            // Establece la posición del botón "No"
+            noButton.style.left = `${x}px`;
+            noButton.style.top = `${y}px`;
+
+            // Cambia la pregunta del botón "No"
+            let randomIndex = Math.floor(Math.random() * questions.length);
+            noButton.innerHTML = questions[randomIndex];
+        }
     </script>
 
 </body>
