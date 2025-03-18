@@ -82,10 +82,7 @@
             let x = Math.random() * maxX;  // Calcula una posición aleatoria en X
             let y = Math.random() * maxY;  // Calcula una posición aleatoria en Y
 
-            // Establece la posición del botón "No"
-            noButton.style.left = `${x}px`;
-            noButton.style.top = `${y}px`;
-
+   
             // Cambia la pregunta del botón "No"
             let randomIndex = Math.floor(Math.random() * questions.length);
             noButton.innerHTML = questions[randomIndex];
